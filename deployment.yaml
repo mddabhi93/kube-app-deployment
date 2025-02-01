@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecr-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecr-app
+  template:
+    metadata:
+      labels:
+        app: ecr-app
+    spec:
+      containers:
+        - name: ecr-container
+          image: 148120747735.dkr.ecr.us-east-1.amazonaws.com/nginx-app-1:latest
+          ports:
+            - containerPort: 80
